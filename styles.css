@@ -1,0 +1,144 @@
+*,
+* ::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background-color: rgb(250, 242, 242);
+  /* background-image: linear-gradient(180deg, #ec3744, #1ca55e);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat; */
+}
+
+.btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  box-shadow: #ffffff 1.5px 1.5px 2px 0px inset,
+    #c7c3c0 -3.2px -3.2px 5px 0px inset;
+  transition: 0.15s;
+}
+
+.btn:active {
+  box-shadow: none;
+}
+
+#darkmode {
+  width: 40px;
+  border: 2px solid black;
+  border-radius: 50%;
+  padding: 0.5rem;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: block;
+  cursor: pointer;
+}
+
+.dark-mode {
+  background-color: rgb(23, 24, 36);
+  color: white;
+}
+
+#lightmode {
+  width: 40px;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  padding: 0.5rem;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: none;
+  z-index: 100;
+  cursor: pointer;
+}
+
+main {
+  text-align: center;
+  margin-top: 5rem;
+  font-size: 2rem;
+}
+
+h2 {
+  position: relative;
+  display: inline-block;
+}
+
+h2 img {
+  position: absolute;
+  width: 40px;
+  transform: rotate(345deg);
+  right: -45px;
+}
+
+h1 {
+  margin: 2rem auto;
+  font-size: 5rem;
+}
+
+.start {
+  background-color: #20ac63;
+}
+
+.stop {
+  background-color: red;
+  margin-inline: 0.5rem;
+}
+
+.reset {
+  background-color: black;
+  box-shadow: #ffffff 1.5px 1.5px 2px 0px inset,
+    #858483 -3.2px -3.2px 3px 0px inset;
+}
+
+p {
+  font-size: 14px;
+  margin-top: 1.2rem;
+  color: #818181;
+}
+
+#skip {
+  display: block;
+  width: 30px;
+  cursor: pointer;
+  opacity: 0.9;
+  margin-inline: auto;
+  margin-top: 0.5rem;
+}
+
+#lightSkip {
+  display: none;
+  width: 30px;
+  cursor: pointer;
+  opacity: 0.6;
+  margin-inline: auto;
+  margin-top: 0.5rem;
+}
+
+#skip,
+#lightSkip {
+  position: relative;
+  transition: 0.15s;
+}
+
+#skip:active,
+#lightSkip:active {
+  transform: scale(1.1);
+}

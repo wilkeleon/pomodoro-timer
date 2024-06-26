@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+    </style>
+  </head>
+  <body id="body">
+    <img
+      id="darkmode"
+      onclick="darkmode()"
+      src="assets/icons8-dark-mode-90.png"
+      alt=""
+    />
+    <img
+      id="lightmode"
+      onclick="lightmode()"
+      src="assets/icons8-do-not-disturb-ios-100 (1).png"
+      alt=""
+    />
+    <main>
+      <h2 id="title">
+        Pomodoro Timer <img src="assets/icons8-tomato-48.png" alt="tomato" />
+      </h2>
+      <h1 id="counter">25:00</h1>
+      <button class="btn start" onclick="start()">Start</button>
+      <button class="btn stop" onclick="stop()">Stop</button>
+      <button class="btn reset" onclick="reset()">Reset</button>
+      <p>Sessions Completed: <span id="sessions">0</span></p>
+      <img
+        id="skip"
+        onclick="skip()"
+        src="assets/icons8-last-90.png"
+        alt="skip button"
+      />
+      <img id="lightSkip" src="assets/skip-darkmode.png" alt="skip button" />
+    </main>
+  </body>
+  <script src="script.js"></script>
+</html>
