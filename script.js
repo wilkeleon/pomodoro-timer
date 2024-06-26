@@ -102,6 +102,6 @@ function breakTime() {
 }
 
 function playAudio() {
-  breakAudio.volume = 0.2;
+  breakAudio.volume = 0.05;
   breakAudio.play();
 }
