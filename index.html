@@ -24,9 +24,10 @@
     />
     <main>
       <h2 id="title">
-        Pomodoro Timer <img src="assets/icons8-tomato-48.png" alt="tomato" />
+        Jittabug's Pomodoro Timer
+        <img src="assets/icons8-tomato-48.png" alt="tomato" />
       </h2>
-      <h1 id="counter">25:00</h1>
+      <h1 id="counter"></h1>
       <button class="btn start" onclick="start()">Start</button>
       <button class="btn stop" onclick="stop()">Stop</button>
       <button class="btn reset" onclick="reset()">Reset</button>
@@ -37,7 +38,17 @@
         src="assets/icons8-last-90.png"
         alt="skip button"
       />
-      <img id="lightSkip" src="assets/skip-darkmode.png" alt="skip button" />
+      <img
+        id="lightSkip"
+        onclick="skip()"
+        src="assets/skip-darkmode.png"
+        alt="skip button"
+      />
+      <audio
+        id="breakAudio"
+        src="assets/timeforbreak.mp3"
+        type="audio/mp3"
+      ></audio>
     </main>
   </body>
   <script src="script.js"></script>

@@ -28,12 +28,14 @@ let timer;
 let count = 0;
 let sessions = 0;
 let isRunning = false;
-let timeLeft = 1500;
+let timeLeft = 10;
+let inBreak = false;
+let breakAudio = document.getElementById("breakAudio");
 
 let counter = document.getElementById("counter");
+counter.textContent = "50:00";
 
 const sessionElement = document.getElementById("sessions");
-
 // Functions
 
 function updateTimer() {
@@ -54,11 +56,9 @@ function start() {
       updateTimer();
       if (timeLeft === 0) {
         clearInterval();
-        timeLeft = 1500;
-        updateTimer();
         sessions++;
         sessionElement.textContent = sessions;
-        stop();
+        breakTime();
       }
     }, 1000);
   }
@@ -72,12 +72,36 @@ function stop() {
 function reset() {
   clearInterval(timer);
   isRunning = false;
-  timeLeft = 1500;
-  updateTimer();
+  if (inBreak) {
+    timeLeft = 600;
+    updateTimer();
+  } else {
+    timeLeft = 3000;
+    updateTimer();
+  }
 }
 
 function skip() {
-  sessions++;
-  sessionElement.textContent = sessions;
-  reset();
+  if (inBreak) {
+    inBreak = false;
+    reset();
+    start();
+  } else {
+    sessions++;
+    sessionElement.textContent = sessions;
+    breakTime();
+  }
+}
+
+function breakTime() {
+  timeLeft = 600;
+  inBreak = true;
+  updateTimer();
+  start();
+  playAudio();
+}
+
+function playAudio() {
+  breakAudio.volume = 0.2;
+  breakAudio.play();
 }

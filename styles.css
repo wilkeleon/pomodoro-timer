@@ -118,7 +118,7 @@ p {
   display: block;
   width: 30px;
   cursor: pointer;
-  opacity: 0.9;
+  opacity: 0.6;
   margin-inline: auto;
   margin-top: 0.5rem;
 }
@@ -141,4 +141,5 @@ p {
 #skip:active,
 #lightSkip:active {
   transform: scale(1.1);
+  opacity: 1;
 }
