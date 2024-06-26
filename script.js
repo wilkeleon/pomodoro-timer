@@ -28,7 +28,7 @@ let timer;
 let count = 0;
 let sessions = 0;
 let isRunning = false;
-let timeLeft = 10;
+let timeLeft = 3000;
 let inBreak = false;
 let breakAudio = document.getElementById("breakAudio");
 
