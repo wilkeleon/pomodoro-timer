@@ -51,14 +51,29 @@ function updateTimer() {
 function start() {
   if (!isRunning) {
     isRunning = true;
+    let lastTime = Date.now();
+
     timer = setInterval(() => {
-      timeLeft--;
+      let now = Date.now();
+      let elapsedTime = now - lastTime;
+
+      timeLeft -= Math.floor(elapsedTime / 1000);
+
+      lastTime = now - (elapsedTime % 1000);
+
       updateTimer();
-      if (timeLeft === 0) {
+
+      if (timeLeft <= 0) {
         clearInterval();
+        isRunning = false;
+        timeLeft = 0;
         sessions++;
         sessionElement.textContent = sessions;
         breakTime();
+      }
+
+      if (inBreak && timeLeft === 10) {
+        playAudio();
       }
     }, 1000);
   }
