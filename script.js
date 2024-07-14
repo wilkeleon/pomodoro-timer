@@ -53,50 +53,77 @@ function updateTimer() {
 
 function start() {
   if (!isRunning) {
-    // If the timer isnt currently running, set the isRunning variable to true
     isRunning = true;
 
-    /* New vairable "lastTime" assigned to Date.now() 
-      It returns the number of milliseconds since January 1, 1970. */
-    let lastTime = Date.now();
-
-    /* Timer variable is a set interval method that will call this function 
-      every 1 second or 1000 milliseconds */
     timer = setInterval(() => {
-      /* New variable "now" assigned to Date.now() 
-      It returns the number of milliseconds since January 1, 1970. */
-      let now = Date.now();
+      if (timeLeft > 0) {
+        timeLeft--;
 
-      /* New variable elapsedTime assigned to the output of now - lastTime which are currently both equal to each other.
-      So the output currently would be 0.*/
-      let elapsedTime = now - lastTime;
-
-      /* timeLeft which is currently set to 3000 seconds/50 minutes or 600 seconds or 10 minutes.
-      elapsedTime / 1000, rounded down is currently 0, because now - lastTime is the same
-      So the output of timeLeft would be the same, 3000 seconds or 600 seconds*/
-      timeLeft -= Math.floor(elapsedTime / 1000);
-
-      /* now = milliseconds since jan 1st 1970, lastTime would equal the milliseconds since 1970 */
-      lastTime = now;
-
-      /* If the timeLeft hits 0 seconds left, the interval will stop running, the isRunning variable
-      will be set to false, timeLeft will now be set to 0, the timer will be updated and the sessions will
-      increase by 1 and display. Then, depending on if we are in break or not, the endBreak or startBreak function
-      will be called. If the timeLeft is not 0, the the timer will just keep updating regularly every second.*/
-      if (timeLeft <= 0) {
+        updateTimer();
+      } else {
         clearInterval(timer);
         isRunning = false;
         timeLeft = 0;
         updateTimer();
-        sessions++;
-        sessionElement.textContent = sessions;
-        inBreak ? endBreak() : startBreak();
-      } else {
-        updateTimer();
+
+        if (inBreak) {
+          endBreak();
+        } else {
+          sessions++;
+          sessionElement.textContent = sessions;
+          startBreak();
+        }
       }
     }, 1000);
   }
 }
+
+//  function start() {
+//   if (!isRunning) {
+//     // If the timer isnt currently running, set the isRunning variable to true
+//     isRunning = true;
+
+//     /* New variable "lastTime" assigned to Date.now()
+//       It returns the number of milliseconds since January 1, 1970. */
+//     let lastTime = Date.now();
+
+//     /* Timer variable is a set interval method that will call this function
+//       every 1 second or 1000 milliseconds */
+//     timer = setInterval(() => {
+//       /* New variable "now" assigned to Date.now()
+//       It returns the number of milliseconds since January 1, 1970. */
+//       let now = Date.now();
+
+//       /* New variable elapsedTime assigned to the output of now - lastTime which are currently both equal to each other.
+//       So the output currently would be 0.*/
+//       let elapsedTime = now - lastTime;
+
+//       /* timeLeft which is currently set to 3000 seconds/50 minutes or 600 seconds or 10 minutes.
+//       elapsedTime / 1000, rounded down is currently 0, because now - lastTime is the same
+//       So the output of timeLeft would be the same, 3000 seconds or 600 seconds*/
+//       timeLeft -= Math.floor(elapsedTime / 1000);
+
+//       /* now = milliseconds since jan 1st 1970, lastTime would equal the milliseconds since 1970 */
+//       lastTime = now;
+
+//       /* If the timeLeft hits 0 seconds left, the interval will stop running, the isRunning variable
+//       will be set to false, timeLeft will now be set to 0, the timer will be updated and the sessions will
+//       increase by 1 and display. Then, depending on if we are in break or not, the endBreak or startBreak function
+//       will be called. If the timeLeft is not 0, the the timer will just keep updating regularly every second.*/
+//       if (timeLeft <= 0) {
+//         clearInterval(timer);
+//         isRunning = false;
+//         timeLeft = 0;
+//         updateTimer();
+//         sessions++;
+//         sessionElement.textContent = sessions;
+//         inBreak ? endBreak() : startBreak();
+//       } else {
+//         updateTimer();
+//       }
+//     }, 1000);
+//   }
+// }
 
 // Stop/Pause Timer
 
@@ -136,7 +163,7 @@ function startBreak() {
   /* When the startBreak function is called, the inBreak variable is now true, the time left is now
     600 seconds or 10 minutes. The timer will be updated and the start and playAudio functions will be called. */
   inBreak = true;
-  timeLeft = 600;
+  timeLeft = 30;
   updateTimer();
   start();
   playAudio();
@@ -146,7 +173,7 @@ function startBreak() {
 
 function endBreak() {
   inBreak = false;
-  timeLeft = 3000;
+  timeLeft = 30;
   start();
 }
 
