@@ -51,32 +51,32 @@ function updateTimer() {
 
 // Start timer
 
-function start() {
-  if (!isRunning) {
-    isRunning = true;
+// function start() {
+//   if (!isRunning) {
+//     isRunning = true;
 
-    timer = setInterval(() => {
-      if (timeLeft > 0) {
-        timeLeft--;
+//     timer = setInterval(() => {
+//       if (timeLeft > 0) {
+//         timeLeft--;
 
-        updateTimer();
-      } else {
-        clearInterval(timer);
-        isRunning = false;
-        timeLeft = 0;
-        updateTimer();
+//         updateTimer();
+//       } else {
+//         clearInterval(timer);
+//         isRunning = false;
+//         timeLeft = 0;
+//         updateTimer();
 
-        if (inBreak) {
-          endBreak();
-        } else {
-          sessions++;
-          sessionElement.textContent = sessions;
-          startBreak();
-        }
-      }
-    }, 1000);
-  }
-}
+//         if (inBreak) {
+//           endBreak();
+//         } else {
+//           sessions++;
+//           sessionElement.textContent = sessions;
+//           startBreak();
+//         }
+//       }
+//     }, 1000);
+//   }
+// }
 
 //  function start() {
 //   if (!isRunning) {
